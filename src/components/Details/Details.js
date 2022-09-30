@@ -1,6 +1,6 @@
 import { faLocationDot, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import './Details.css'
 
 const Details = () => {
     return (
@@ -22,12 +22,12 @@ const Details = () => {
                 <h5>Interested In: Fiction</h5>
             </div>
             <div className='p-2 mt-4'>
-                <h5>Add a Break</h5>
+                <h5>Add A Break</h5>
                 <div className='border rounded p-3 d-flex justify-content-between'>
-                    <span className='border rounded-circle p-2'>05m</span>
-                    <span className='border rounded-circle p-2'>10m</span>
-                    <span className='border rounded-circle p-2'>15m</span>
-                    <span className='border rounded-circle p-2'>20m</span>
+                    <span className='break-time border rounded-circle p-2'>05m</span>
+                    <span className='break-time border rounded-circle p-2'>10m</span>
+                    <span className='break-time border rounded-circle p-2'>15m</span>
+                    <span className='break-time border rounded-circle p-2'>20m</span>
                 </div>
             </div>
             <div className='p-2 mt-4'>
