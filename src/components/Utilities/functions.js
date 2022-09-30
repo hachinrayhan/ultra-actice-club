@@ -1,5 +1,4 @@
 const setToLocalStorage = innerText => {
-    console.log(innerText);
     localStorage.setItem('break-time', innerText);
 }
 
@@ -8,4 +7,8 @@ const getLocalStorageValue = () => {
     return breakTime;
 }
 
-export { setToLocalStorage, getLocalStorageValue };
+const getTime = (time) => {
+    console.log(time);
+}
+
+export { setToLocalStorage, getLocalStorageValue, getTime };

@@ -1,10 +1,17 @@
 import { faLocationDot, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { getLocalStorageValue, setToLocalStorage } from '../Utilities/functions';
+import { getLocalStorageValue, getTime, setToLocalStorage } from '../Utilities/functions';
 import './Details.css'
 
 const Details = () => {
+    const [time, setTime] = useState(0);
+    useEffect(() => {
+        const newTime = getTime();
+        console.log(newTime);
+    }, [])
+
+
     const [breakTime, setBreakTime] = useState(0);
     const addToUi = (event) => {
         const innerText = event.target.innerText;
@@ -51,7 +58,7 @@ const Details = () => {
             </div>
             <div className='p-2 mt-4'>
                 <h5>Reading Details</h5>
-                <p className='border rounded'>Required Time: </p>
+                <p className='border rounded'>Required Time: {time} hrs</p>
                 <p className='border rounded'>Break Time: {breakTime}</p>
             </div>
             <div className='text-center'>
