@@ -1,12 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Books from '../Books/Books';
 import './Club.css'
 import Details from '../Details/Details';
+import { getTime } from '../Utilities/functions';
 
 
 const Club = () => {
+    let previousTime = 0;
+    const [time, setTime] = useState(0);
+    useEffect(() => {
+        const newTime = getTime();
+        previousTime = previousTime + newTime;
+        setTime(previousTime);
+    }, [])
+
     return (
         <div className='club'>
             <div className="library mt-5 mx-5">
@@ -18,7 +27,7 @@ const Club = () => {
                 <Books></Books>
             </div>
             <div className="details pt-5 ps-3 bg-light">
-                <Details></Details>
+                <Details time={time}></Details>
             </div>
         </div>
     );

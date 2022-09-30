@@ -8,7 +8,7 @@ const getLocalStorageValue = () => {
 }
 
 const getTime = (time) => {
-    console.log(time);
+    return time;
 }
 
 export { setToLocalStorage, getLocalStorageValue, getTime };
