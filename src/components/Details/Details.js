@@ -1,8 +1,27 @@
 import { faLocationDot, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
+import { getLocalStorageValue, setToLocalStorage } from '../Utilities/functions';
 import './Details.css'
 
 const Details = () => {
+    const [breakTime, setBreakTime] = useState(0);
+    const addToUi = (event) => {
+        const innerText = event.target.innerText;
+        setBreakTime(innerText);
+        setToLocalStorage(innerText);
+    }
+    useEffect(() => {
+        let storedTime = getLocalStorageValue();
+        if (storedTime) {
+            setBreakTime(storedTime);
+        }
+        else {
+            storedTime = 0;
+            setBreakTime(storedTime);
+        }
+    }, []);
+
     return (
         <div>
             <div className='d-flex'>
@@ -24,16 +43,16 @@ const Details = () => {
             <div className='p-2 mt-4'>
                 <h5>Add A Break</h5>
                 <div className='border rounded p-3 d-flex justify-content-between'>
-                    <span className='break-time border rounded-circle p-2'>05m</span>
-                    <span className='break-time border rounded-circle p-2'>10m</span>
-                    <span className='break-time border rounded-circle p-2'>15m</span>
-                    <span className='break-time border rounded-circle p-2'>20m</span>
+                    <span onClick={addToUi} className='break-time border rounded-circle p-2'>05m</span>
+                    <span onClick={addToUi} className='break-time border rounded-circle p-2'>10m</span>
+                    <span onClick={addToUi} className='break-time border rounded-circle p-2'>15m</span>
+                    <span onClick={addToUi} className='break-time border rounded-circle p-2'>20m</span>
                 </div>
             </div>
             <div className='p-2 mt-4'>
                 <h5>Reading Details</h5>
                 <p className='border rounded'>Required Time: </p>
-                <p className='border rounded'>Break Time: </p>
+                <p className='border rounded'>Break Time: {breakTime}</p>
             </div>
             <div className='text-center'>
                 <button className='btn btn-primary'>Finish Reading</button>
